@@ -10,7 +10,7 @@ let urlSchema = new Schema({
 });
 
 
-let UrlModel = mongoose.model('qwe', urlSchema);
+let UrlModel = mongoose.model('url', urlSchema);
 export default {
   save(infoObj) {
       return new UrlModel(infoObj)

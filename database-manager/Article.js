@@ -15,7 +15,7 @@ let articleSchema = new Schema({
   tags: [String]
 });
 
-let ArticleModel = mongoose.model('articleqwe', articleSchema);
+let ArticleModel = mongoose.model('article', articleSchema);
 
 const Article = {
 	// 保存文档
