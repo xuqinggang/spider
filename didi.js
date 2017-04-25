@@ -15,6 +15,7 @@ export default {
     contact: path.resolve(__dirname, 'src/js/contact.js'),
     success: path.resolve(__dirname, 'src/js/success.js'),
     resolve: path.resolve(__dirname, 'src/js/resolve.js'),
+    report: path.resolve(__dirname, 'src/js/report.js'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -184,7 +185,7 @@ export default {
       },
       comments: false,
     }),
-    
+
     // 第三方库文件模块的生成
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor', //  将公共模块提取，生成名为`vendor`的chunk
@@ -194,7 +195,7 @@ export default {
 
     // 生成入口文件的公共模块
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'common', 
+      name: 'common',
       filename: 'js/common/common-[hash].js',
       chunks: ['index', 'resolve', 'success', 'contact'],
     }),
@@ -202,7 +203,7 @@ export default {
     new HtmlWebpackPlugin({
       // template: 'html-withimg-loader!'+path.join(__dirname, 'src/html/index.html'), 
       template: path.join(__dirname, 'src/html/index.html'), // 源文件html模板路径
-      filename: 'index.html', // 生成的目标html文件的存放路径
+      filename: 'index.html',
       chunks: ['vendor', 'common', 'index'], // 需要引入的chunk，不配置就会引入所有页面的资源
       inject: true, //js插入的位置，true/'head'/'body'/false
       // hash: true, //为静态资源生成hash值，是以问号的形式添加
@@ -243,6 +244,19 @@ export default {
       template: path.join(__dirname, 'src/html/resolve.html'),
       filename: process.env.env === 'development' ? 'views/resolve.html' : 'resolve.html',
       chunks: ['vendor', 'common', 'resolve'], // 需要引入的chunk，不配置就会引入所有页面的资源
+      inject: true,
+      // hash: true,
+      cache: true,
+      minify: { //压缩HTML文件  
+        removeComments: true, //移除HTML中的注释
+        collapseWhitespace: false //删除空白符与换行符
+      },
+    }),
+
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src/html/report.html'),
+      filename: process.env.env === 'development' ? 'views/report.html' : 'report.html',
+      chunks: ['vendor', 'common', 'report'], // 需要引入的chunk，不配置就会引入所有页面的资源
       inject: true,
       // hash: true,
       cache: true,
