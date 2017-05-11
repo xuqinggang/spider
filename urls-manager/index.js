@@ -1,5 +1,5 @@
 import urlDatabase from '../database-manager/url.js';
-import { hashStr } from '../utils/utils.js';
+// import { hashStr } from '../utils/utils.js';
 const urlsManager = {
   // url索引位置
   // index: 0,

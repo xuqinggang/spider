@@ -1,12 +1,28 @@
-import Article from './Article.js';
+function test() {
+  return new Promise((resolve, reject) => {
+    resolve('123');
+  })
+}
 
-// Article.save({
-// 	link: '123'
-// })
-// .then(data => {
-// 	console.log(data);
-// })
-Article.find();
+function test2() {
+  return test()
+    .then(data => {
+      return Promise.resolve(data + '123')
+    })
+}
+test2()
+  .then(data => {
+    console.log(data)
+  });
+// import Article from './Article.js';
+
+// // Article.save({
+// // 	link: '123'
+// // })
+// // .then(data => {
+// // 	console.log(data);
+// // })
+// Article.find();
 // Article.removeAll();
 // 
 // 

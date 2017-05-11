@@ -104,7 +104,7 @@ export default {
     console.log('addCrawIntoWork');
     // // if (flag) {
       urlsManager.pop()
-        .then(url => {  
+        .then(url => {
           // 集合中若没有url,则url为null
           if (url && url.url) {
             this.createCraw(url.url);
@@ -116,7 +116,6 @@ export default {
               clearTimeout(timer);
             }, 5000);
           }
-          
         });
     // }
 
