@@ -9,6 +9,8 @@ let urlSchema = new Schema({
   url: String,
 });
 
+
+let UrlModel = mongoose.model('url', urlSchema);
 export default {
   save(infoObj) {
       return new UrlModel(infoObj)
